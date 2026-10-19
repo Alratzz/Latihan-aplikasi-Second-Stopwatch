@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Stopwatch</title>
+</head>
+<body>
+
+    <h1>Second Stopwatch</h1>
+
+    <!-- Tampilan detik -->
+    <h2 id="display">0</h2>
+
+    <!-- Tombol stopwatch -->
+    <button onclick="startStopwatch()">Start</button>
+    <button onclick="stopStopwatch()">Stop</button>
+    <button onclick="resetStopwatch()">Reset</button>
+
+    <script>
+        //  menyimpan jumlah detik
+        let detik = 0;
+
+        // menyimpan timer
+        let timer = null;
+
+        const display = document.getElementById("display");
+
+        
+        function startStopwatch() {
+
+           
+            if (timer !== null) {
+                return;
+            }
+
+            // Menjalankan fungsi setiap 1000 milidetik
+            timer = setInterval(function() {
+
+                // Menambah jumlah detik
+                detik++;
+
+                // Memperbarui angka pada halaman
+                display.textContent = detik;
+
+            }, 1000);
+        }
+
+        function stopStopwatch() {
+
+            // Menghentikan timer
+            clearInterval(timer);
+
+            // Menandai bahwa timer sudah berhenti
+            timer = null;
+        }
+
+        function resetStopwatch() {
+
+            // Menghentikan timer
+            clearInterval(timer);
+
+            timer = null;
+
+            detik = 0;
+
+            display.textContent = detik;
+        }
+    </script>
+
+</body>
+</html>
